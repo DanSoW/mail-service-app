@@ -1,0 +1,17 @@
+port: "5000"
+api_url: "http://localhost:5000"
+paths:
+  logs:
+    info: "./logs/info.log"
+    error: "./logs/error.log"
+    warn: "./logs/warn.log"
+    fatal: "./logs/fatal.log"
+smtp:
+  host: "smtp.mail.ru"
+  port: 587
+  email: "email"
+imap:
+  host: "imap.mail.ru"
+  port: 993
+  email: "email"
+  inbox: "INBOX/ToMyself"

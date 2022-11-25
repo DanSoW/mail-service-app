@@ -1,0 +1,11 @@
+{"level":"error","msg":"535 5.7.0 NEOBHODIM parol prilozheniya https://help.mail.ru/mail/security/protection/external / Application password is REQUIRED","time":"2022-11-13T13:26:15+08:00"}
+{"level":"error","msg":"gomail: could not send email 1: open public/e1cf075d-e44c-4c54-b532-e5dcce456141.jpeg\": The filename, directory name, or volume label syntax is incorrect.","time":"2022-11-25T03:51:22+08:00"}
+{"level":"error","msg":"gomail: could not send email 1: open public/f227946f-809a-416d-9453-89143438e5cd.jpeg\": The filename, directory name, or volume label syntax is incorrect.","time":"2022-11-25T03:58:21+08:00"}
+{"level":"error","msg":"gomail: could not send email 1: open public/078987c1-f709-4568-b246-af337da4f167.jpeg\": The filename, directory name, or volume label syntax is incorrect.","time":"2022-11-25T03:59:38+08:00"}
+{"level":"error","msg":"dial tcp: lookup ssl.net@mail.ru: getaddrinfow: A non-recoverable error occurred during a database lookup.","time":"2022-11-25T04:27:04+08:00"}
+{"level":"error","msg":"dial tcp: lookup ssl.net@mail.ru: getaddrinfow: A non-recoverable error occurred during a database lookup.","time":"2022-11-25T04:27:47+08:00"}
+{"level":"error","msg":"dial tcp: lookup ssl.net@mail.ru: getaddrinfow: A non-recoverable error occurred during a database lookup.","time":"2022-11-25T04:28:25+08:00"}
+{"level":"error","msg":"read tcp 127.0.0.1:1030-\u003e217.69.139.160:993: wsarecv: An existing connection was forcibly closed by the remote host.","time":"2022-11-25T04:28:50+08:00"}
+{"level":"error","msg":"read tcp 127.0.0.1:1070-\u003e217.69.139.160:993: wsarecv: An existing connection was forcibly closed by the remote host.","time":"2022-11-25T04:29:47+08:00"}
+{"level":"error","msg":"json: cannot unmarshal string into Go struct field OutputModel.count of type uint32","time":"2022-11-25T06:28:22+08:00"}
+{"level":"error","msg":"request Content-Type isn't multipart/form-data","time":"2022-11-25T06:45:32+08:00"}

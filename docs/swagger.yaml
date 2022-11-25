@@ -1,0 +1,154 @@
+basePath: /
+definitions:
+  file.FileModel:
+    properties:
+      filename:
+        description: Имя файлы
+        type: string
+      filepath:
+        description: Полный путь к файлу
+        type: string
+    type: object
+  handler.errorResponse:
+    properties:
+      message:
+        type: string
+    type: object
+  message.MessageOutputModel:
+    properties:
+      files:
+        description: Прикреплённые файлы
+        items:
+          $ref: '#/definitions/file.FileModel'
+        type: array
+      message:
+        description: Тело сообщения
+        type: string
+      sender:
+        description: Отправитель сообщения
+        type: string
+      subject:
+        description: Тема сообщения
+        type: string
+    required:
+    - message
+    - sender
+    - subject
+    type: object
+  message.MessagesModel:
+    properties:
+      messages:
+        description: Множество сообщений
+        items:
+          $ref: '#/definitions/message.MessageOutputModel'
+        type: array
+    type: object
+  message.OutputModel:
+    properties:
+      count:
+        description: Количество считываемых сообщений
+        type: integer
+    required:
+    - count
+    type: object
+host: localhost:5000
+info:
+  contact: {}
+  title: Почтовый сервис
+  version: "1.0"
+paths:
+  /mailer/get:
+    post:
+      consumes:
+      - application/json
+      description: Получение сообщений из почты пользователя
+      operationId: mailer-get-mail
+      parameters:
+      - description: Настройки
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/message.OutputModel'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: messages
+          schema:
+            $ref: '#/definitions/message.MessagesModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+      summary: GetMail
+      tags:
+      - mailer
+  /mailer/send:
+    post:
+      consumes:
+      - application/json
+      description: Отправка сообщения пользователю
+      operationId: mailer-send-mail
+      parameters:
+      - description: Файлы
+        in: formData
+        items:
+          type: string
+        name: files
+        required: true
+        type: array
+      - description: Адрес получателя сообщения
+        in: formData
+        name: receiver
+        required: true
+        type: string
+      - description: Сообщение для отправки
+        in: formData
+        name: message
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: data
+          schema:
+            type: boolean
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+      summary: SendMail
+      tags:
+      - mailer
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
